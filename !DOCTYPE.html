@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Riss Games - Download</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(270deg, #050507, #0a0a15, #050507);
+    background-size: 600% 600%;
+    animation: gradientMove 30s ease infinite;
+    font-family: 'Orbitron', sans-serif;
+    color: #008f8a;
+    overflow: hidden;
+  }
+
+  @keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+  }
+
+  .glow-text {
+    font-size: 3.5rem;
+    position: relative;
+    color: #008f8a;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow:
+      0 0 3px #008f8a,
+      0 0 7px #008f8a,
+      0 0 15px #008f8a,
+      0 0 25px #008f8a;
+    animation: flicker 4s infinite alternate;
+    user-select: none;
+  }
+
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow:
+        0 0 3px #008f8a,
+        0 0 7px #008f8a,
+        0 0 15px #008f8a,
+        0 0 25px #008f8a;
+      opacity: 1;
+    }
+    20%, 22%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.8;
+    }
+  }
+
+  .glow-text::before,
+  .glow-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, #008f8a 50%, transparent 70%);
+    animation: slideLight 5s linear infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .glow-text::after {
+    animation-delay: 2.5s;
+    filter: blur(8px);
+  }
+
+  @keyframes slideLight {
+    0% {left: -50%;}
+    100% {left: 100%;}
+  }
+
+  .download-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: 2px solid #008f8a;
+    padding: 8px 20px;
+    font-size: 1rem;
+    color: #008f8a;
+    cursor: pointer;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow:
+      0 0 6px #008f8a,
+      0 0 15px #008f8a;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 10;
+  }
+
+  .download-btn:hover {
+    background-color: #008f8a;
+    color: #000;
+    box-shadow:
+      0 0 15px #008f8a,
+      0 0 35px #008f8a;
+  }
+
+  #time-date {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    color: #008f8a;
+    text-shadow:
+      0 0 3px #008f8a,
+      0 0 7px #008f8a;
+    letter-spacing: 1.5px;
+    font-family: 'Orbitron', sans-serif;
+    user-select: none;
+    z-index: 10;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Changed button to a link -->
+  <a href="download.html" class="download-btn">Download</a>
+  <div id="time-date">Loading time...</div>
+
+  <div class="container">
+    <h1 class="glow-text">Riss Games</h1>
+  </div>
+
+  <script>
+    function updateTime() {
+      const options = {
+        timeZone: 'Africa/Lagos',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      };
+      const now = new Date();
+
+      const formatterTime = new Intl.DateTimeFormat('en-GB', { 
+        timeZone: options.timeZone, 
+        hour12: options.hour12,
+        hour: options.hour,
+        minute: options.minute,
+        second: options.second 
+      });
+      const formatterDate = new Intl.DateTimeFormat('en-GB', { 
+        timeZone: options.timeZone,
+        day: options.day,
+        month: options.month,
+        year: options.year
+      });
+
+      const timeString = formatterTime.format(now);
+      const dateString = formatterDate.format(now);
+
+      document.getElementById('time-date').textContent = `${dateString} | ${timeString}`;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>

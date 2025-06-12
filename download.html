@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riss Games - Game Downloads</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #010101, #0a0a0a);
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffa5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #00ffa5;
+      margin-bottom: 40px;
+    }
+
+    .game-list {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .game-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      border: 1px solid #00ffa5;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #00ffa533;
+    }
+
+    .game-title {
+      font-size: 1.2rem;
+      color: #00ffa5;
+      letter-spacing: 1px;
+    }
+
+    .download-btn {
+      background: transparent;
+      border: 2px solid #00ffa5;
+      color: #00ffa5;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      border-radius: 25px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 8px #00ffa555;
+    }
+
+    .download-btn:hover {
+      background: #00ffa5;
+      color: #000;
+      box-shadow: 0 0 15px #00ffa5, 0 0 30px #00ffa5;
+    }
+
+    .back-link {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #00ffa5;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .back-link:hover {
+      color: #00dd88;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Available Downloads</h1>
+
+  <div class="game-list">
+    <div class="game-item">
+      <div class="game-title">Friday Night Funkin'</div>
+      <a href="fnf.zip" download><button class="download-btn">Download</button></a>
+    </div>
+
+    <div class="game-item">
+      <div class="game-title">Undertale</div>
+      <a href="undertale.zip" download><button class="download-btn">Download</button></a>
+    </div>
+
+    <div class="game-item">
+      <div class="game-title">Deltarune</div>
+      <a href="deltarune.zip" download><button class="download-btn">Download</button></a>
+    </div>
+
+    <div class="game-item">
+      <div class="game-title">Bloons TD 6</div>
+      <a href="btd6.zip" download><button class="download-btn">Download</button></a>
+    </div>
+  </div>
+
+  <div class="back-link" onclick="history.back()">← Back to Home</div>
+
+</body>
+</html>
